@@ -1,0 +1,97 @@
+<template>
+  <div class="hello">
+    <h-header></h-header>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to my forum!</h1>
+        <p>
+          就是一种尝试...
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="/blog" role="button">博客</a></p>
+      </div>
+    </div>
+    <div class="container" >
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4" v-for="item in article">
+          <h2>{{item.title}}</h2>
+          <p>
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            {{item.date}}
+            <span style="margin-left: 5PX;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            {{item.comment_n}}
+            <span style="margin-left: 5PX;" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            10
+          </p>
+          <p v-html="item.content"></p>
+          <p><a :id="item._id" class="btn btn-default" href="#" role="button">了解更多 &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+    </div>
+  </div>
+</template>
+
+<script>
+  import header from './public/header.vue'
+  export default {
+//		name: 'hello',
+    data() {
+      return {
+        article:[],
+      }
+    },
+    components: {
+      "h-header": header
+    },
+    methods: {
+
+    },
+    mounted() {
+
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm=>{
+        vm.$http.post(`${vm.$store.state.getUrl}/api/home`).then((result)=>{
+          vm.article =result.data;
+          for(var i = 0;i<vm.article.length;i++){
+            vm.article[i].content= vm.marked(vm.article[i].content);
+          }
+          console.log(result);
+        }).catch((err)=>{
+
+        })
+      })
+    },
+    filters:{
+
+    }
+  }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  h1,
+  h2 {
+    font-weight: normal;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a {
+    color: #42b983;
+  }
+</style>
