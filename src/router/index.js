@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import contactMe from '@/components/contactMe'
 import login from '@/components/login'
 import regist from '@/components/regist'
+import articles from '@/components/articles'
 
 //后台页面的路由
 import edit from '@/components/back/edit'
@@ -28,6 +29,10 @@ export default new Router({
     {
       path: '/regist',
       component: regist
+    },
+    {
+      path:'/articles',
+      component:articles
     },
     //登录后台路由
     {

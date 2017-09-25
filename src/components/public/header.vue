@@ -18,7 +18,9 @@
                 <li>
                   <router-link to="/">首页</router-link>
                 </li>
-                <li><a href="javascript:">文章</a></li>
+                <li>
+                  <router-link to="/articles">文章</router-link>
+                </li>
                 <li><a href="javascript:">照片墙</a></li>
                 <li><a @click="goContactMe" href="javascript:">联系站长</a></li>
                 <li><a href="javascript:">关于站长</a></li>

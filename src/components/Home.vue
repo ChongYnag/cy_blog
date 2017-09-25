@@ -7,27 +7,40 @@
         <p>
           就是一种尝试...
         </p>
-        <p><a class="btn btn-primary btn-lg" href="/blog" role="button">博客</a></p>
+        <!--<p><a class="btn btn-primary btn-lg" href="/blog" role="button">博客</a></p>-->
       </div>
     </div>
     <div class="container" >
+      <div class="alert alert-info text-center" role="alert">最新分享</div>
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4" v-for="item in article">
-          <h2>{{item.title}}</h2>
-          <p>
-            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-            {{item.date}}
-            <span style="margin-left: 5PX;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            {{item.comment_n}}
-            <span style="margin-left: 5PX;" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            10
-          </p>
-          <p v-html="item.content"></p>
-          <p><a :id="item._id" class="btn btn-default" href="#" role="button">了解更多 &raquo;</a></p>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="../../static/images/moren.jpg" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h2 class="content_h2">{{item.title}}</h2>
+              <p class="content_p2" v-html="item.content"></p>
+              <p class="content_p1">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                {{item.date}}
+                <span style="margin-left: 5PX;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                {{item.comment_n}}
+                <!--<span style="margin-left: 5PX;" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>-->
+                <!--10-->
+              </p>
+              <p><a :id="item._id" class="btn btn-default" href="#" role="button">了解更多 &raquo;</a></p>
+            </div>
+          </div>
         </div>
       </div>
-
+      <br>
+      <p class="text-center">
+        <router-link class="btn btn-primary btn-lg" to="/articles">查看更多</router-link>
+      </p>
       <hr>
 
       <footer>
@@ -93,5 +106,30 @@
 
   a {
     color: #42b983;
+  }
+  .content_h2{
+    height:40px;
+  }
+  .content_p1{
+    font-size: 14px;
+  }
+  .content_p2{
+    height: 300px;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+  }
+  .media{
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px;
+  }
+ .media img{
+   border-radius: 50%;
+   overflow: hidden;
+   width: 60px;
+   height: 60px;
+ }
+  .col-md-4{
+    margin-bottom: 10px;
   }
 </style>
