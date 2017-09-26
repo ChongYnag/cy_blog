@@ -1,0 +1,14 @@
+1. 安装好git后，要注册git帐号（email），我自己用了git.oschina.net的，因为不卡....。在生存ssh公匙 ,添加到git
+2. 建立仓库目录，如 test_git
+3. cd test_git ,    git init  初始化
+4. echo "hello" > test.txt   编辑文件test.txt, 
+5. git  add test.txt,  添加文件，  git commit -m "test"    提交。（这部可不要，只是为了测试）
+6. git remote add origin git@git.oschina.net:xxx/xxx.git    关联远程仓库
+7. git pull origin master   此时已经有远程库在你本地了。。。
+
+
+
+linux系统中.sh文件运行提示权限不够
+
+可以用"chmod  a+x  文件名"来添加执行权限。
+或者用chmod  777  文件名对所有人添加读、写、执行权限。

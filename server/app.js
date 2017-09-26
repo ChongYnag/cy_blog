@@ -3,6 +3,7 @@ const route = require('./api/index.js');
 const app = express();
 const db = require("./db/db.js");
 const path = require("path");
+const port = 3000;
 // let session = require('express-session');
 //设置跨域
 app.all('*', function(req, res, next) {
@@ -14,6 +15,7 @@ app.all('*', function(req, res, next) {
     else  next();
 });
 app.use(express.static('./dist'));
+app.use('/author',express.static('./author'));
 // app.use('/index', express.static(__dirname + '/../index.html'));
 
 //session
@@ -28,4 +30,8 @@ app.use(express.static('./dist'));
 // });
 //处理各种请求
 route(app);
-app.listen(3000);
+
+app.listen(port);
+//暴露端口
+exports.port = port;
+

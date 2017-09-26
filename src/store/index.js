@@ -10,6 +10,7 @@ import mutations from './mutations.js'
 const store = new Vuex.Store({
 	state:{
 		getUrl:"http://127.0.0.1:3000",
+		// getUrl:"http://127.0.0.1:3000",
 	},
 	actions,
 	getters,
