@@ -23,26 +23,37 @@
 手册：https://docs.mongodb.org/manual/
 ```
 安装完数据库后
+
+设置环境变量 
 ```
-设置环境变量 C:\Program Files\MongoDB\Server\3.0\bin 到path，根据自己的安装路径进行设置。
+C:\Program Files\MongoDB\Server\3.0\bin 到path，根据自己的安装路径进行设置。
 ```
 启动mongodb。
 ```
 mongod --dbpath c:\mongo      // c:\mongo 为数据库文件夹位置，可自行设置（不要关闭当前窗口，然后重新打开另外一个cmd窗口，进行下一个步骤）
 ```
-mongo  //开机
+//开机
+```
+mongo  
 ```
 
-# 依赖
+## 依赖
+```
 npm install
+```
 
-# 生成模式 默认端口8080
+## 生成模式 默认端口8080
+```
 npm run dev
+```
 
-# 打包上线。生成dist目录。访问地址 域名根目录。
+## 打包上线。生成dist目录。访问地址 域名根目录。
+```
 npm run build
+```
 
-# 运行服务器。（确保数据库mongodb已经启动，不要关闭当前窗口，然后重新打开另外一个dos窗口，进行下一个步骤）
+## 运行服务器。（确保数据库mongodb已经启动，不要关闭当前窗口，然后重新打开另外一个dos窗口，进行下一个步骤）
+```
 npm run start
 ```
 
