@@ -28,10 +28,10 @@
 C:\Program Files\MongoDB\Server\3.0\bin 到path，根据自己的安装路径进行设置。
 ```
 启动mongodb。
-```
-mongod --dbpath c:\mongo  // c:\mongo 为数据库文件夹位置，可自行设置（不要关闭当前窗口，打开另外一个cmd窗口，进行下一个步骤）
-```
-mongo  
+
+- mongod --dbpath c:\mongo  //c:\mongo 为数据库位置,可自行设置（不要关闭当前窗口）
+
+- mongo  //打开另外一个cmd窗口,输入mongo 开机
 
 
 ## Setup
