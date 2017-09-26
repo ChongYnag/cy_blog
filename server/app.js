@@ -15,7 +15,7 @@ app.all('*', function(req, res, next) {
     else  next();
 });
 app.use(express.static('./dist'));
-app.use('/author',express.static('./author'));
+app.use('/author',express.static('./server/author'));
 // app.use('/index', express.static(__dirname + '/../index.html'));
 
 //session
