@@ -1,6 +1,11 @@
 # cy_blog
 
-> A Vue.js project
+> A Vue.js + Node.js + Mongodb + Express的前后端分离的论坛技术栈
+
+## 主要技术构成
+前端主要技术栈为vue.js、vue-router、 vuex 、以及bootstrape 响应式布局
+
+后端主要技术栈为node.js、 mongodb、 Express框架
 
 ## Build Setup
 
