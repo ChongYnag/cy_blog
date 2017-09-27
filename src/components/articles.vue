@@ -14,8 +14,9 @@
       <div class="media" v-for="item in article">
         <div class="media-left">
           <a href="#">
-            <img class="media-object" src="../../static/images/moren.jpg" alt="...">
+                <img class="media-object" :src="item.userInfo.authorPic" alt="...">
           </a>
+          <span class="name">{{item.userInfo.username}}</span>
         </div>
         <div class="media-body">
           <h2 class="content_h2">{{item.title}}</h2>
@@ -83,5 +84,12 @@
     overflow: hidden;
     width: 60px;
     height: 60px;
+  }
+  .name{
+    width:60px;
+    margin-top: 5px;
+    display:inline-block;
+    text-align:center;
+    overflow:hidden;
   }
 </style>

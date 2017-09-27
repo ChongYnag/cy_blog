@@ -82,6 +82,7 @@ const init = ()=>{
         }
         let name = "chongyang"; //初始化博主的用户名
         let pwd = md5("123456"); //初始化博主的密码 用md5加密技术存入数据库
+        let username = "重阳";
         let author = "moren.jpg";
         //创建博主用户
         db.collection("users").find({}).toArray(function(err, docs) {
@@ -91,7 +92,7 @@ const init = ()=>{
                 return;
             }
             if(!docs.length){
-	            db.collection("users").insertOne({name:"chongyang",password:pwd,author:author},(err,result)=>{
+	            db.collection("users").insertOne({user:"chongyang",password:pwd,username:username,author:author},(err,result)=>{
 		            db.close();
 		        })
             }

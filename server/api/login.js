@@ -17,7 +17,7 @@ app.post("/api/login",(req,res,next)=>{
   form.parse(req, function(err, fields, files) {
     let user = fields.name;
     let pwd = md5(fields.password);
-    db.find("users",{name:user},(err,result)=>{
+    db.find("users",{user:user},(err,result)=>{
       if(err){
         console.log(err);
         res.send("-1");
@@ -25,7 +25,8 @@ app.post("/api/login",(req,res,next)=>{
       if(result.length){//有这个用户
         if(result[0].password==pwd){
           //写入session
-          req.session.user = user;
+          console.log(result[0]);
+          req.session.user = result[0].username;
           
           res.send("1"); //登录成功
           console.log(req.session.user);

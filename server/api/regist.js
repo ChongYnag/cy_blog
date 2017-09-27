@@ -7,6 +7,7 @@ app.post("/api/regist",(req,res,next)=>{
   let form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
     let user = fields.name;
+    let username = fields.username;
     let pwd = md5(fields.password);
     db.find("users",{"name":user},(err,result)=>{
       if(err){
@@ -16,7 +17,7 @@ app.post("/api/regist",(req,res,next)=>{
       if(result.length){
         res.send("-2");//该用户已经注册
       }else {
-        db.insertOne("users",{"name":user,"password":pwd},(err,result)=>{
+        db.insertOne("users",{"user":user,"password":pwd,"username":username},(err,result)=>{
           if(err){
             console.log(err);
             res.send("-1");

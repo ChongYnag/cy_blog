@@ -4,9 +4,13 @@
 		<div id="login" class="container">
       <h2 class="text-center">注册</h2>
 		  <div class="form-group">
-		    <label for="exampleInputEmail1">用户名</label>
-		    <input v-model="user" type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名，建议为汉字真是姓名等">
+		    <label for="exampleInputEmail1">用户账号</label>
+		    <input v-model="user" type="text" class="form-control" maxlength="11" id="exampleInputEmail1" placeholder="请输入用户账号，建议为数字字母,限11位">
 		  </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">用户昵称</label>
+        <input v-model="username" type="text" class="form-control" maxlength="4" id="exampleInputEmail1" placeholder="请输入昵称，建议为汉字真是姓名等,限4位">
+      </div>
 		  <div class="form-group">
 		    <label for="exampleInputPassword1">密码</label>
 		    <input v-model="pwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
@@ -24,6 +28,7 @@
 		data(){
 			return{
         user:"",
+        username:'',
         pwd:"",
 			}
 		},
@@ -35,7 +40,8 @@
           this.$http.post(`${this.$store.state.getUrl}/api/regist`,
             {
               name:this.user,
-              password:this.pwd
+              username:this.username,
+              password:this.pwd,
             }).then((result)=>{
               if(result.data==-2){
                 layer.msg("用户名已存在，请更换用户名！");
