@@ -19,7 +19,7 @@ app.get("/api/articles",(req,res,next)=>{
 			}
 			result[i].date = sd.format(result[i].date,"YYYY-mm-DD hh:MM:ss");
       
-		    db.find("users",{"name":result[i].author},(err,result1)=>{
+		    db.find("users",{"user":result[i].author},(err,result1)=>{
 		      	let userInfo ={
 		    		username:result1[0].username,
 		    		authorPic:`${host}/author/${result1[0].author}`,

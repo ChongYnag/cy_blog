@@ -5,6 +5,8 @@ import contactMe from '@/components/contactMe'
 import login from '@/components/login'
 import regist from '@/components/regist'
 import articles from '@/components/articles'
+import userinfo from '@/components/userinfo'
+import picture from '@/components/picture'
 
 //后台页面的路由
 import edit from '@/components/back/edit'
@@ -34,6 +36,15 @@ export default new Router({
       path:'/articles',
       component:articles
     },
+    {
+      path:'/userinfo',
+      component:userinfo
+    },
+    {
+      path:'/picture',
+      component:picture
+    },
+
     //登录后台路由
     {
       path: '/edit',
