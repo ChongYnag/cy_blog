@@ -10,7 +10,6 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">JCY</a>
-          <a v-if="isLogin" class="navbar-brand"  style="color: #ffffff;font-size: 16px">您好，欢迎{{user}}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -26,21 +25,13 @@
                 <li><a href="javascript:">关于站长</a></li>
                 <li  v-if="isLogin" ><a href="javascript:">个人中心</a></li>
             </ul>
-            <div class="navbar-form navbar-right">
-		          <div class="form-group has-feedback">
-		            <label class="sr-only" for="kw">搜索:</label>
-		            <input type="text" class="form-control" id="kw" placeholder="搜索"/>
-		            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-		          </div>
-              <span v-if="!isLogin" class="">
-                <router-link id="login" to="/login">登录</router-link>
-                <router-link id="regist" to="/regist">注册</router-link>
-              </span>
-              <span v-if="isLogin" class="" style="margin-left: 20px;">
-                <a id="regist" @click="logout" href="javascript:">退出</a>
-              </span>
-
-		    </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li v-if="isLogin"><a style="color: #ffffff;font-size: 16px">您好，欢迎{{user}}</a></li>
+                <li v-if="!isLogin"><router-link id="login" to="/login">登录</router-link></li>
+                <li v-if="!isLogin"><router-link id="regist" to="/regist">注册</router-link></li>
+                <li v-if="isLogin"><a id="regist" @click="logout" href="javascript:">退出</a></li>
+            </ul>
+            
         </div>
     </div>
 </nav>
