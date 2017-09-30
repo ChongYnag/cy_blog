@@ -33,7 +33,12 @@
         </div>
       </div>
     </div>
-    <!--//做分页-->
+    <p v-if="isMore" class="text-center">
+      下拉加载更多
+    </p>
+    <p v-if="!isMore" class="text-center">
+      已经到底了，别扯了
+    </p>
     </div>
 
 </template>
@@ -47,6 +52,8 @@
         article:[],
         More:false,
         scroll:0,
+        isMore:true,
+        isGone:true,//还可以请求数据
 			}
 		},
     beforeRouteEnter(to,from,next){
@@ -58,13 +65,34 @@
     methods:{
       getList(){
         this.$http.get(`${this.$store.state.getUrl}/api/articles?page=${this.page}`).then((result)=>{
-//          console.log(result);
-          this.article =result.data;
-          for(let i = 0;i<this.article.length;i++){
-            this.article[i].content= this.marked(this.article[i].content);
+          console.log(result);
+          if(result.data.length){
+            this.article =this.article.concat(result.data);
+            for(let i = 0;i<this.article.length;i++){
+              this.article[i].content= this.marked(this.article[i].content);
+            }
+          }else {
+            this.isGone = false;
+            this.isMore = false;
           }
         })
       },
+    },
+    mounted(){
+      let	ExhibitionAll = ()=>{
+        console.log($(document).scrollTop()); // 可视区域高度
+        console.log( $(document).height()); // 滚动高度
+        console.log($(window).height()); // 文档高度
+        if(this.isGone){
+          if($(document).scrollTop()!=0){
+            if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+              this.page++;
+              this.getList();
+            }
+          }
+        }
+      };
+      this.$store.state.scrollWin(ExhibitionAll,this);
     },
 		components: {
 			"h-header": header
@@ -77,6 +105,7 @@
     background: #f0f0f0;
     border-radius: 8px;
     padding: 10px;
+    margin-bottom: 15px;
 
   }
   .media img{

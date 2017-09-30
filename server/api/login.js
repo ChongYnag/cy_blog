@@ -26,8 +26,9 @@ app.post("/api/login",(req,res,next)=>{
         if(result[0].password==pwd){
           //写入session
           console.log(result[0]);
-          req.session.user = result[0].username;
-          
+          req.session.username = result[0].username;
+          req.session.user = result[0].user;
+
           res.send("1"); //登录成功
           console.log(req.session.user);
         }else{

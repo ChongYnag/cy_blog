@@ -20,7 +20,9 @@
                 <li>
                   <router-link to="/articles">文章</router-link>
                 </li>
-                <li><a href="javascript:">照片墙</a></li>
+                <li>
+                  <router-link to="/picture">照片墙</router-link>
+                </li>
                 <li><a @click="goContactMe" href="javascript:">联系站长</a></li>
                 <li><a href="javascript:">关于站长</a></li>
                 <li  v-if="isLogin" ><a href="javascript:">个人中心</a></li>
@@ -31,7 +33,7 @@
                 <li v-if="!isLogin"><router-link id="regist" to="/regist">注册</router-link></li>
                 <li v-if="isLogin"><a id="regist" @click="logout" href="javascript:">退出</a></li>
             </ul>
-            
+
         </div>
     </div>
 </nav>

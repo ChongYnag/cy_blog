@@ -7,6 +7,7 @@ import regist from '@/components/regist'
 import articles from '@/components/articles'
 import userinfo from '@/components/userinfo'
 import picture from '@/components/picture'
+import uploadImg from '@/components/uploadImg'
 
 //后台页面的路由
 import edit from '@/components/back/edit'
@@ -44,7 +45,10 @@ export default new Router({
       path:'/picture',
       component:picture
     },
-
+    {
+      path:'/uploadImg',
+      component:uploadImg
+    },
     //登录后台路由
     {
       path: '/edit',

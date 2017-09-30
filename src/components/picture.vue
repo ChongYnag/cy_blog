@@ -7,34 +7,33 @@
         <p>
           就是一种尝试...
         </p>
-        <p class="text-right"><a class="btn btn-primary btn-lg" href="/blog" role="button">上传照片</a></p>
+        <p class="text-right">
+          <router-link  class="btn btn-primary btn-lg" to="uploadImg">
+            上传照片
+          </router-link>
+        </p>
+        <!--<input id="inputImage" type="file" hidden>-->
       </div>
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4" v-for="item in pictures">
           <div class="size">
-            <img  src="http://127.0.0.1:3000/author/jiafeimao.jpg" alt="">
+            <img  :src="item.userInfo.authorPic" alt="">
           </div>
           <p class="info">
-            <span class="left">上传者：重阳</span>
-            <span class="right">2017 09-27 17:51</span>
+            <span class="left">上传者：{{item.userInfo.username}}</span>
+            <span class="right">{{item.date}}</span>
           </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="size">
-            <img  src="http://127.0.0.1:3000/author/timg.jpg" alt="">
-          </div>
-          <p class="text-right">上传人：重阳</p>
-        </div>
-        <div class="col-lg-4">
-          <div class="size">
-            <img src="http://127.0.0.1:3000/author/jiafeimao.jpg" alt="">
-          </div>
-          <p class="text-right">上传人：重阳</p>
         </div>
       </div>
     </div>
+    <p v-if="isMore" class="text-center">
+      下拉加载更多
+    </p>
+    <p v-if="!isMore" class="text-center">
+      已经到底了，别扯了
+    </p>
     <!--//做分页-->
     </div>
 
@@ -46,9 +45,11 @@
 		data(){
 			return{
         page:0,
-        article:[],
+        pictures:[],
         More:false,
         scroll:0,
+        isMore:true,
+        isGone:true,//还可以请求数据
 			}
 		},
     beforeRouteEnter(to,from,next){
@@ -59,14 +60,38 @@
     },
     methods:{
       getList(){
-        this.$http.get(`${this.$store.state.getUrl}/api/articles?page=${this.page}`).then((result)=>{
-//          console.log(result);
-          this.article =result.data;
-          for(let i = 0;i<this.article.length;i++){
-            this.article[i].content= this.marked(this.article[i].content);
+        this.$http.get(`${this.$store.state.getUrl}/api/pictures?page=${this.page}`).then((result)=>{
+          if(result.data.length){
+            this.pictures = this.pictures.concat(result.data);
+          }else {
+            this.isGone = false;
+            this.isMore = false;
           }
+
         })
       },
+      //上传图片
+      uploadImg(){
+        document.getElementById('inputImage').click();
+      }
+    },
+    mounted(){
+
+      let	ExhibitionAll = ()=>{
+        console.log($(document).scrollTop()); // 可视区域高度
+        console.log( $(document).height()); // 滚动高度
+        console.log($(window).height()); // 文档高度
+        if(this.isGone){
+          if($(document).scrollTop()!=0){
+            if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+              this.page++;
+              this.getList();
+            }
+
+          }
+        }
+      };
+      this.$store.state.scrollWin(ExhibitionAll,this);
     },
 		components: {
 			"h-header": header
@@ -87,6 +112,9 @@
     border-top-right-radius: 5px;
     padding: 10px;
   }
+  .col-lg-4{
+    margin-bottom: 20px;
+  }
   .col-lg-4 img{
     /*object-fit:;*/
     width: 240px;
@@ -97,6 +125,10 @@
     height: 40px;
     line-height: 40px;
     overflow: hidden;
+    background: #f2f2f2;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 20px;
     margin: 0;
   }
   .info span.left{
@@ -104,5 +136,8 @@
   }
   .info span.right{
     float: right;
+  }
+  .text-center{
+    color: #ccc;
   }
 </style>

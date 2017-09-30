@@ -29,9 +29,16 @@
 		data(){
 			return{
         user:"",
-        pwd:""
+        pwd:"",
+        from:null //用来记住路由，方便登录之后跳转到来之前的路由
 			}
 		},
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+        // 通过 `vm` 访问组件实例
+        vm.from = from;
+      })
+    },
     methods:{
 		  login(){
         //验证后续在写
@@ -50,8 +57,9 @@
             }else if(result.data==1){
               layer.msg("登录成功！");
               setTimeout(()=>{
-                this.$router.push({path:"/"})
-              },2000)
+                //登录之后跳转到来之前的路由
+                this.$router.push({path:this.from.path})
+              },1000)
             }
           })
         }else{
