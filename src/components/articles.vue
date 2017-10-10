@@ -7,7 +7,7 @@
         <p>
           就是一种尝试...
         </p>
-        <p class="text-right"><a class="btn btn-primary btn-lg" href="/blog" role="button">分享文章</a></p>
+        <p class="text-right"><a class="btn btn-primary btn-lg" @click="toEdit" role="button">分享文章</a></p>
       </div>
     </div>
     <div class="container">
@@ -77,6 +77,17 @@
           }
         })
       },
+      toEdit(){
+        console.log(this.$store.state.isLogin);
+        if(this.$store.state.isLogin){
+          this.$router.push({path:"edit"});
+        }else{
+          layer.msg("您还没有登录，请先去登录");
+          setTimeout(()=>{
+            this.$router.push({path:"login"});
+          },1000)
+        }
+      }
     },
     mounted(){
       let	ExhibitionAll = ()=>{

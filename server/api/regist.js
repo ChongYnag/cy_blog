@@ -17,7 +17,7 @@ app.post("/api/regist",(req,res,next)=>{
       if(result.length){
         res.send("-2");//该用户已经注册
       }else {
-        db.insertOne("users",{"user":user,"password":pwd,"username":username},(err,result)=>{
+        db.insertOne("users",{"user":user,"password":pwd,"username":username,author:"moren.jpg"},(err,result)=>{
           if(err){
             console.log(err);
             res.send("-1");

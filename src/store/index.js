@@ -10,6 +10,7 @@ import mutations from './mutations.js'
 const store = new Vuex.Store({
 	state:{
 		getUrl:"http://127.0.0.1:3000",
+    isLogin:false, //登录信息 默认是未登录
 		// getUrl:"http://127.0.0.1:3000",
     scrollWin(objData, _this) {
       $(window).unbind("scroll").on("scroll", function() {

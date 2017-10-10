@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="container" >
-      <div class="alert alert-info text-center" role="alert">最新分享</div>
+      <div class="alert alert-info text-center" role="alert">最新文章分享</div>
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4" v-for="item in article">
@@ -38,10 +38,22 @@
           </div>
         </div>
       </div>
+      <div class="alert alert-info text-center" role="alert">最新照片分享</div>
+        <div class="row">
+          <div class="col-lg-4" v-for="item in pictures">
+            <div class="size">
+              <img  :src="item.userInfo.authorPic" alt="">
+            </div>
+            <p class="info">
+              <span class="left">上传者：{{item.userInfo.username}}</span>
+              <span class="right">{{item.date}}</span>
+            </p>
+          </div>
+        </div>
       <br>
-      <p class="text-center">
-        <router-link class="btn btn-primary btn-lg" to="/articles">查看更多</router-link>
-      </p>
+      <!--<p class="text-center">-->
+        <!--<router-link class="btn btn-primary btn-lg" to="/articles">查看更多</router-link>-->
+      <!--</p>-->
       <hr>
 
       <footer>
@@ -58,6 +70,7 @@
     data() {
       return {
         article:[],
+        pictures:[],
       }
     },
     components: {
@@ -70,17 +83,22 @@
 
     },
     beforeRouteEnter (to, from, next) {
-      next(vm=>{
-        vm.$http.post(`${vm.$store.state.getUrl}/api/home`).then((result)=>{
-          vm.article =result.data;
-          for(var i = 0;i<vm.article.length;i++){
-            vm.article[i].content= vm.marked(vm.article[i].content);
+      next(vm=> {
+        vm.$http.post(`${vm.$store.state.getUrl}/api/home`).then((result) => {
+          vm.article = result.data;
+          for (var i = 0; i < vm.article.length; i++) {
+            vm.article[i].content = vm.marked(vm.article[i].content);
           }
           console.log(result);
+        }).catch((err) => {
+
+        });
+        vm.$http.get(`${vm.$store.state.getUrl}/api/pictures?page=0&size=3`).then((result)=>{
+          vm.pictures = vm.pictures.concat(result.data);
         }).catch((err)=>{
 
-        })
-      })
+        });
+      });
     },
     filters:{
 
@@ -133,11 +151,47 @@
   .col-md-4{
     margin-bottom: 10px;
   }
-  .name{
-    width:60px;
+  .name {
+    width: 60px;
     margin-top: 5px;
-    display:inline-block;
-    text-align:center;
-    overflow:hidden;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+  }
+  .size{
+    height:200px;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+  }
+  .col-lg-4{
+    margin-bottom: 20px;
+  }
+  .col-lg-4 img{
+    /*object-fit:;*/
+    width: 240px;
+    height:180px;
+    object-fit: contain;
+  }
+  .info{
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    background: #f2f2f2;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 20px;
+    margin: 0;
+  }
+  .info span.left{
+    float: left;
+  }
+  .info span.right{
+    float: right;
+  }
+  .row{
+    margin-bottom: 20px;
   }
 </style>

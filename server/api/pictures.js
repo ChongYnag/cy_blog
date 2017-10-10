@@ -6,8 +6,10 @@ const sd = require('silly-datetime');
 const port = require("../app.js");
 app.get("/api/pictures",(req,res,next)=>{
   let page =  req.query.page;
+  let size = parseInt(req.query.size);
   let host = 'http://'+req.hostname+':'+port.port;
-  db.find("pictures",{},{size:9,currPages:page,sort:{"date":-1}},(err,result)=>{
+  console.log(size);
+  db.find("pictures",{},{size:size,currPages:page,sort:{"date":-1}},(err,result)=>{
     console.log(result);
     //此处需要注意，异步执行，需要强制异步变同步
     (function iterator(i){

@@ -17,7 +17,7 @@
       <br>
       <br>
       <p class="text-right">
-        没有账号<a href="/regist">去注册</a>
+        没有账号<router-link to="regist">去注册</router-link>
       </p>
 		</div>
 	</div>

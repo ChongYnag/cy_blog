@@ -5,6 +5,7 @@ const login = require("./login.js");
 const articles = require("./articles.js");
 const pictures = require("./pictures.js");
 const upload = require("./upload.js");
+const edit = require("./edit.js");
 
 module.exports = (app)=>{
 	app.use(email);
@@ -14,4 +15,5 @@ module.exports = (app)=>{
 	app.use(articles);
 	app.use(pictures);
 	app.use(upload);
+	app.use(edit);
 };

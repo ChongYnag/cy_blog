@@ -44,8 +44,8 @@ app.post("/api/login",(req,res,next)=>{
 //前台判断拿登录信息
 app.get("/session",(req,res,next)=>{
   console.log(req.session);
-  if(req.session.user){
-    res.send(req.session.user);
+  if(req.session.username){
+    res.send(req.session.username);
   }else{
     res.send("noLogin")//没有登录
   }
@@ -54,6 +54,7 @@ app.get("/session",(req,res,next)=>{
 app.get("/logout",(req,res,next)=>{
   getSession="";
   req.session.user = "";
+  req.session.username = "";
   res.send("ok");
 });
 module.exports = app;

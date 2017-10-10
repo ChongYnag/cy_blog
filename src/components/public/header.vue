@@ -58,9 +58,11 @@
 			  this.$http.get(`${this.$store.state.getUrl}/session`).then((result)=>{
           console.log(result);
           if(result.data=="noLogin"){
+            this.$store.state.isLogin=false;
             this.isLogin=false;
           }else{
             this.user=result.data;
+            this.$store.state.isLogin=true;
             this.isLogin=true;
           }
         }).catch((err)=>{

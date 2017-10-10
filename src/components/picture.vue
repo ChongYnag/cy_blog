@@ -60,7 +60,7 @@
     },
     methods:{
       getList(){
-        this.$http.get(`${this.$store.state.getUrl}/api/pictures?page=${this.page}`).then((result)=>{
+        this.$http.get(`${this.$store.state.getUrl}/api/pictures?size=9&page=${this.page}`).then((result)=>{
           if(result.data.length){
             this.pictures = this.pictures.concat(result.data);
           }else {

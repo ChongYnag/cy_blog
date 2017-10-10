@@ -52,7 +52,7 @@ export default new Router({
     //登录后台路由
     {
       path: '/edit',
-      component: edit
+      component:edit
     }
   ]
 })
