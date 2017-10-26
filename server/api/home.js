@@ -18,7 +18,7 @@ app.post("/api/home",(req,res,next)=>{
 				return;
 			}
 			result[i].date = sd.format(result[i].date,"YYYY-MM-DD HH:mm:ss");
-
+        console.log(result[i].author);
 		    db.find("users",{"user":result[i].author},(err,result1)=>{
 		    	let userInfo ={
 		    		username:result1[0].username,

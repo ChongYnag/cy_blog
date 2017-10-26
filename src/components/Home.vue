@@ -57,7 +57,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2016 Company, Inc.</p>
+        <f-footer></f-footer>
       </footer>
     </div>
   </div>
@@ -65,6 +65,7 @@
 
 <script>
   import header from './public/header.vue'
+  import footer from './public/footer.vue'
   export default {
 //		name: 'hello',
     data() {
@@ -74,7 +75,8 @@
       }
     },
     components: {
-      "h-header": header
+      "h-header": header,
+      "f-footer":footer
     },
     methods: {
 

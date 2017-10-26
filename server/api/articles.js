@@ -17,7 +17,7 @@ app.get("/api/articles",(req,res,next)=>{
 				res.send(result);
 				return;
 			}
-			result[i].date = sd.format(result[i].date,"YYYY-mm-DD hh:MM:ss");
+      result[i].date = sd.format(result[i].date,"YYYY-MM-DD HH:mm:ss");
 
 		    db.find("users",{"user":result[i].user},(err,result1)=>{
 		      	let userInfo ={
