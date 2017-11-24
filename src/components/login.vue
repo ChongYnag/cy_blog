@@ -43,7 +43,7 @@
 		  login(){
         //验证后续在写
         if(this.user&&this.pwd){
-          this.$http.post(`${this.$store.state.getUrl}/api/login`,
+          this.$http.post(`/api/login`,
             {
               name:this.user,
               password:this.pwd

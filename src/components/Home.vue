@@ -86,7 +86,7 @@
     },
     beforeRouteEnter (to, from, next) {
       next(vm=> {
-        vm.$http.post(`${vm.$store.state.getUrl}/api/home`).then((result) => {
+        vm.$http.post(`/api/home`).then((result) => {
           vm.article = result.data;
           for (var i = 0; i < vm.article.length; i++) {
             vm.article[i].content = vm.marked(vm.article[i].content);
@@ -95,7 +95,7 @@
         }).catch((err) => {
 
         });
-        vm.$http.get(`${vm.$store.state.getUrl}/api/pictures?page=0&size=3`).then((result)=>{
+        vm.$http.get(`/api/pictures?page=0&size=3`).then((result)=>{
           vm.pictures = vm.pictures.concat(result.data);
         }).catch((err)=>{
 

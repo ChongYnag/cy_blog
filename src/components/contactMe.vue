@@ -51,7 +51,7 @@
 				if(this.email&&this.title&&this.content){
 					if(this.emailReg.test(this.email)){
 						//验证通过可以发送请求了
-						this.$http.post(`${this.$store.state.getUrl}/api/email`,
+						this.$http.post(`/api/email`,
 							{email:this.email,
 								title:this.title,
 									content:this.content,

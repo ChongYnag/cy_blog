@@ -52,7 +52,7 @@
       fabiao(){
         console.log(this.content);
         if(this.content && this.title){
-          this.$http.post(`${this.$store.state.getUrl}/api/edit`,
+          this.$http.post(`/api/edit`,
             {
               title:this.title,
               content:this.content

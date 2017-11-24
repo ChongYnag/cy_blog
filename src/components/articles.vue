@@ -64,7 +64,7 @@
     },
     methods:{
       getList(){
-        this.$http.get(`${this.$store.state.getUrl}/api/articles?page=${this.page}`).then((result)=>{
+        this.$http.get(`/api/articles?page=${this.page}`).then((result)=>{
           console.log(result);
           if(result.data.length){
             for(let i = 0;i<result.data;i++){

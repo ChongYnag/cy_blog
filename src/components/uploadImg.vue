@@ -61,7 +61,7 @@
         let data = new FormData();
         data.append('file', input.files[0]);
         if(input.files[0]){
-          this.$http.post(`${this.$store.state.getUrl}/api/upload`,data,{headers: {'Content-Type':data.type}}).then((result)=>{
+          this.$http.post(`/api/upload`,data,{headers: {'Content-Type':data.type}}).then((result)=>{
             console.log(result)
             if(result.data=="-9"){
               layer.msg("您还没有登录，请先去登录");
