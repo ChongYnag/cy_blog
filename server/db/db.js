@@ -3,8 +3,8 @@ const md5 = require("./md5.js");
 const MongoClient = require('mongodb').MongoClient;
 //连接数据库
 const  __connectDB = (callback)=> {
-       let url = 'mongodb://localhost:27017/my-blog';
- // let url = 'mongodb://47.93.103.113:27017/my-blog';
+//     let url = 'mongodb://localhost:27017/my-blog';
+    let url = 'mongodb://47.93.103.113:27017/my-blog';
     //连接数据库
     MongoClient.connect(url, function(err, db) {
         callback(err,db);

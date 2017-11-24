@@ -3,7 +3,7 @@ const route = require('./api/index.js');
 const app = express();
 const db = require("./db/db.js");
 const path = require("path");
-const port = 80;
+const port = 3000;
 // let session = require('express-session');
 //设置跨域
 app.all('*', function(req, res, next) {

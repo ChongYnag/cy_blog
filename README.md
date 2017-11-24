@@ -2,9 +2,11 @@
 
 > A Vue.js + Node.js + Mongodb + Express的前后端分离的论坛技术栈
 
-> 论坛地址：http://www.jiangchongyang.cn 域名正在备案中
+> 论坛地址：http://www.jiangchongyang.cn 
 
-> ip地址：http://47.93.103.113 可以通过ip访问
+> 如有任何问题：可QQ联系我：89305141
+
+> 欢迎联系我一起研究技术，相互请教
 
 ## 主要功能
 - 登录注册用户，可以上传自己的头像，以及分享搜索技术文章，回复等功，联系站长等功能，
