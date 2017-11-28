@@ -3,9 +3,10 @@
     <h-header></h-header>
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcome to my forum!</h1>
+        <h1>一个帮助开发者成长的社区</h1>
         <p>
-          就是一种尝试...
+			这里是所有的开发者服务的社区，我们相信通过分享和学习可以帮助那些渴望不断提高自己的开发者。
+			Become a Better Developer by Sharing and Learning
         </p>
         <!--<p><a class="btn btn-primary btn-lg" href="/blog" role="button">博客</a></p>-->
       </div>

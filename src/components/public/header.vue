@@ -55,7 +55,7 @@
 			},
       //获取登录信息
       getSession(){
-			  this.$http.get(`/session/session`).then((result)=>{
+			  this.$http.get(`/api/session`).then((result)=>{
           console.log(result);
           if(result.data=="noLogin"){
             this.$store.state.isLogin=false;
@@ -71,7 +71,7 @@
       },
       //退出接口
       logout(){
-        this.$http.get(`/session/logout`).then((result)=>{
+        this.$http.get(`/api/logout`).then((result)=>{
           if(result.data=="ok"){
             window.location.href="/";
           }

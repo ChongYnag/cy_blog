@@ -42,7 +42,7 @@ app.post("/api/login",(req,res,next)=>{
   });
 });
 //前台判断拿登录信息
-app.get("/session",(req,res,next)=>{
+app.get("/api/session",(req,res,next)=>{
   console.log(req.session);
   if(req.session.username){
     res.send(req.session.username);
@@ -51,7 +51,7 @@ app.get("/session",(req,res,next)=>{
   }
 });
 //退出接口
-app.get("/logout",(req,res,next)=>{
+app.get("/api/logout",(req,res,next)=>{
   getSession="";
   req.session.user = "";
   req.session.username = "";
