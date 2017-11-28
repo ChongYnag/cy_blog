@@ -65,12 +65,13 @@
     methods:{
       getList(){
         this.$http.get(`/api/articles?page=${this.page}`).then((result)=>{
-          console.log(result);
           if(result.data.length){
-            for(let i = 0;i<result.data;i++){
-              result.data.content= this.marked(result.data.content);
+          	this.article =this.article.concat(result.data);
+            for(let i = 0;i<this.article.length;i++){
+              this.article[i].content = this.marked(this.article[i].content);
+              console.log(this.article[i].content);
             }
-            this.article =this.article.concat(result.data);
+            
           }else {
             this.isGone = false;
             this.isMore = false;
